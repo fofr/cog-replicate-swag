@@ -1,0 +1,584 @@
+{
+  "last_node_id": 69,
+  "last_link_id": 81,
+  "nodes": [
+    {
+      "id": 6,
+      "type": "SaveImage",
+      "pos": [
+        1857.4000244140625,
+        130
+      ],
+      "size": {
+        "0": 315,
+        "1": 270
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 59
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "tshirt"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        100,
+        130
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            76
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "replicate-logo.png",
+        "image"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "ControlNetLoader",
+      "pos": [
+        100,
+        574
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            75
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "control_v1p_sdxl_qrcode_monster.safetensors"
+      ]
+    },
+    {
+      "id": 65,
+      "type": "EmptyLatentImage",
+      "pos": [
+        100,
+        762
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            73
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1280,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        1432.4000244140625,
+        130
+      ],
+      "size": {
+        "0": 325,
+        "1": 562
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 69
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 78
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 72
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 73
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 74
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": null,
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            59
+          ],
+          "shape": 3,
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        579740861542000,
+        null,
+        20,
+        7,
+        "dpmpp_2m_sde",
+        "karras",
+        1,
+        "none",
+        "true"
+      ],
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 62,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        100,
+        998
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            67
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            68,
+            71,
+            80
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            74
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "albedobaseXL_v13.safetensors"
+      ]
+    },
+    {
+      "id": 66,
+      "type": "ControlNetApply",
+      "pos": [
+        1015,
+        130
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 98
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 81
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 75
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            78
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetApply"
+      },
+      "widgets_values": [
+        1.35
+      ]
+    },
+    {
+      "id": 64,
+      "type": "CLIPTextEncode",
+      "pos": [
+        515,
+        386
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 71
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            72
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "dull, brown, garish, ugly, text, words, people, photo, photography"
+      ]
+    },
+    {
+      "id": 69,
+      "type": "CLIPTextEncode",
+      "pos": [
+        515,
+        716
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            81
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "TshirtDesignAF, T shirt design, epic AI, cel shaded, indie, hip, cool, svg, thick outline, doodle style, illustration, black background"
+      ]
+    },
+    {
+      "id": 63,
+      "type": "LoraLoader",
+      "pos": [
+        515,
+        130
+      ],
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 67
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 68
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            69
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "artificialguybr/TShirtDesignRedmondV2-Tshirtdesign-TshirtDesignAF.safetensors",
+        1,
+        1
+      ]
+    }
+  ],
+  "links": [
+    [
+      59,
+      2,
+      5,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      67,
+      62,
+      0,
+      63,
+      0,
+      "MODEL"
+    ],
+    [
+      68,
+      62,
+      1,
+      63,
+      1,
+      "CLIP"
+    ],
+    [
+      69,
+      63,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      71,
+      62,
+      1,
+      64,
+      0,
+      "CLIP"
+    ],
+    [
+      72,
+      64,
+      0,
+      2,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      73,
+      65,
+      0,
+      2,
+      3,
+      "LATENT"
+    ],
+    [
+      74,
+      62,
+      2,
+      2,
+      4,
+      "VAE"
+    ],
+    [
+      75,
+      5,
+      0,
+      66,
+      1,
+      "CONTROL_NET"
+    ],
+    [
+      76,
+      4,
+      0,
+      66,
+      2,
+      "IMAGE"
+    ],
+    [
+      78,
+      66,
+      0,
+      2,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      80,
+      62,
+      1,
+      69,
+      0,
+      "CLIP"
+    ],
+    [
+      81,
+      69,
+      0,
+      66,
+      0,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

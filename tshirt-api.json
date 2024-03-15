@@ -1,0 +1,156 @@
+{
+  "2": {
+    "inputs": {
+      "seed": 579740861542000,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "preview_method": "none",
+      "vae_decode": "true",
+      "model": [
+        "63",
+        0
+      ],
+      "positive": [
+        "66",
+        0
+      ],
+      "negative": [
+        "64",
+        0
+      ],
+      "latent_image": [
+        "65",
+        0
+      ],
+      "optional_vae": [
+        "62",
+        2
+      ]
+    },
+    "class_type": "KSampler (Efficient)",
+    "_meta": {
+      "title": "KSampler (Efficient)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "image": "replicate-logo.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "5": {
+    "inputs": {
+      "control_net_name": "control_v1p_sdxl_qrcode_monster.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "6": {
+    "inputs": {
+      "filename_prefix": "tshirt",
+      "images": [
+        "2",
+        5
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "62": {
+    "inputs": {
+      "ckpt_name": "albedobaseXL_v13.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "63": {
+    "inputs": {
+      "lora_name": "artificialguybr/TShirtDesignRedmondV2-Tshirtdesign-TshirtDesignAF.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "62",
+        0
+      ],
+      "clip": [
+        "62",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "64": {
+    "inputs": {
+      "text": "dull, brown, garish, ugly, text, words, people, photo, photography",
+      "clip": [
+        "62",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "65": {
+    "inputs": {
+      "width": 1024,
+      "height": 1280,
+      "batch_size": 3
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "66": {
+    "inputs": {
+      "strength": 1.35,
+      "conditioning": [
+        "69",
+        0
+      ],
+      "control_net": [
+        "5",
+        0
+      ],
+      "image": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "ControlNetApply",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "69": {
+    "inputs": {
+      "text": "TshirtDesignAF, T shirt design, epic AI, cel shaded, indie, hip, cool, svg, thick outline, doodle style, illustration, black background",
+      "clip": [
+        "62",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  }
+}
